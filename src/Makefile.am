@@ -160,6 +160,7 @@ detect-http-ua.c detect-http-ua.h \
 detect-http-uri.c detect-http-uri.h \
 detect-icmp-id.c detect-icmp-id.h \
 detect-icmp-seq.c detect-icmp-seq.h \
+detect-icmp-not-match.cpp detect-icmp-not-match.h \
 detect-icode.c detect-icode.h \
 detect-id.c detect-id.h \
 detect-ipopts.c detect-ipopts.h \

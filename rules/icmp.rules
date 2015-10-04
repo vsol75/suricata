@@ -1,0 +1,2 @@
+# alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"GPL ICMP undefined code"; icode:>18; classtype:misc-activity; sid:2100197; rev:4;)
+alert icmp any any -> any any (msg:"ANY ICMP PACKET"; classtype:misc-activity; sid:2100197; rev:4;)

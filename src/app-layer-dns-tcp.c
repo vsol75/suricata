@@ -136,7 +136,7 @@ static int DNSTCPRequestParseProbe(uint8_t *input, uint32_t input_len)
         }
 #ifdef DEBUG
         DNSQueryTrailer *trailer = (DNSQueryTrailer *)data;
-        SCLogDebug("trailer type %04x class %04x", ntohs(trailer->type), ntohs(trailer->class));
+        SCLogDebug("trailer type %04x class %04x", ntohs(trailer->type), ntohs(trailer->clazz));
 #endif
         data += sizeof(DNSQueryTrailer);
     }
@@ -251,13 +251,13 @@ static int DNSRequestParseData(Flow *f, DNSState *dns_state, const uint8_t *inpu
             goto insufficient_data;
         }
         DNSQueryTrailer *trailer = (DNSQueryTrailer *)data;
-        SCLogDebug("trailer type %04x class %04x", ntohs(trailer->type), ntohs(trailer->class));
+        SCLogDebug("trailer type %04x class %04x", ntohs(trailer->type), ntohs(trailer->clazz));
         data += sizeof(DNSQueryTrailer);
 
         /* store our data */
         if (dns_state != NULL) {
             DNSStoreQueryInState(dns_state, fqdn, fqdn_offset,
-                    ntohs(trailer->type), ntohs(trailer->class),
+                    ntohs(trailer->type), ntohs(trailer->clazz),
                     ntohs(dns_header->tx_id));
         }
     }
@@ -429,7 +429,7 @@ static int DNSReponseParseData(Flow *f, DNSState *dns_state, const uint8_t *inpu
         }
 #if DEBUG
         DNSQueryTrailer *trailer = (DNSQueryTrailer *)data;
-        SCLogDebug("trailer type %04x class %04x", ntohs(trailer->type), ntohs(trailer->class));
+        SCLogDebug("trailer type %04x class %04x", ntohs(trailer->type), ntohs(trailer->clazz));
 #endif
         data += sizeof(DNSQueryTrailer);
     }

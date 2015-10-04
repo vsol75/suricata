@@ -5132,6 +5132,7 @@ void SigTableSetup(void)
     DetectAppLayerProtocolRegister();
     DetectTemplateRegister();
     DetectTemplateBufferRegister();
+    DetectIcmpNotMatchRegister();
 }
 
 void SigTableRegisterTests(void)

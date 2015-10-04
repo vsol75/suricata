@@ -391,7 +391,7 @@ typedef struct Signature_ {
     DetectProto proto;
 
     /** classification id **/
-    uint8_t class;
+    uint8_t clazz;
 
     /** ipv4 match arrays */
     uint16_t addr_dst_match4_cnt;
@@ -1224,6 +1224,8 @@ enum {
 
     DETECT_TEMPLATE,
     DETECT_AL_TEMPLATE_BUFFER,
+
+	DETECT_ICMP_NOT_MATCH,
 
     /* make sure this stays last */
     DETECT_TBLSIZE,

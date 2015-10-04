@@ -104,14 +104,14 @@ typedef struct DNSHeader_ {
 
 typedef struct DNSQueryTrailer_ {
     uint16_t type;
-    uint16_t class;
+    uint16_t clazz;
 } __attribute__((__packed__)) DNSQueryTrailer;
 
 /** \brief DNS answer header
  *  packed as we don't want alignment to mess up sizeof() */
 struct DNSAnswerHeader_ {
     uint16_t type;
-    uint16_t class;
+    uint16_t clazz;
     uint32_t ttl;
     uint16_t len;
 } __attribute__((__packed__));
@@ -132,7 +132,7 @@ typedef enum {
 typedef struct DNSQueryEntry_ {
     TAILQ_ENTRY(DNSQueryEntry_) next;
     uint16_t type;
-    uint16_t class;
+    uint16_t clazz;
     uint16_t len;
 } DNSQueryEntry;
 
@@ -146,7 +146,7 @@ typedef struct DNSAnswerEntry_ {
     TAILQ_ENTRY(DNSAnswerEntry_) next;
 
     uint16_t type;
-    uint16_t class;
+    uint16_t clazz;
 
     uint32_t ttl;
 
@@ -240,10 +240,10 @@ int DNSValidateRequestHeader(DNSState *, const DNSHeader *dns_header);
 int DNSValidateResponseHeader(DNSState *, const DNSHeader *dns_header);
 
 void DNSStoreQueryInState(DNSState *dns_state, const uint8_t *fqdn, const uint16_t fqdn_len,
-        const uint16_t type, const uint16_t class, const uint16_t tx_id);
+        const uint16_t type, const uint16_t clazz, const uint16_t tx_id);
 
 void DNSStoreAnswerInState(DNSState *dns_state, const int rtype, const uint8_t *fqdn,
-        const uint16_t fqdn_len, const uint16_t type, const uint16_t class, const uint16_t ttl,
+        const uint16_t fqdn_len, const uint16_t type, const uint16_t clazz, const uint16_t ttl,
         const uint8_t *data, const uint16_t data_len, const uint16_t tx_id);
 
 const uint8_t *DNSReponseParse(DNSState *dns_state, const DNSHeader * const dns_header,

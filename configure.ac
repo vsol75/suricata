@@ -95,6 +95,12 @@
             ;;
     esac
 
+	# Add C++11 support
+    AC_PROG_CXX
+    AC_LANG_PUSH([C++])
+	CXXFLAGS="$CXXFLAGS -std=c++0x"
+    AC_LANG_POP([C++])
+                            
     # Checks for programs.
     AC_PROG_AWK
     AC_PROG_CC
